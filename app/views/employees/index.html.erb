@@ -1,0 +1,30 @@
+<h1>Lista de Empleado</h1>
+
+<div class="row">
+<div class="col"></div>
+  <div class="col-6">
+    <p style="float: right;"><%= link_to 'Nuevo Empelado', new_employee_path %></p>
+    <table class="table">
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellido</th>
+        <th scope="col"></th>
+      </tr>
+    
+      <% @employees.each do |employee| %>
+        <tr>
+          <td><%= employee.name %></td>
+          <td><%= employee.company %></td>
+          <td><%= link_to 'Show', employee_path(employee) %></td>
+          <td><%= link_to 'Edit', edit_employee_path(employee) %></td>
+          <td><%= link_to 'Destroy', employee_path(employee),
+              method: :delete,
+              data: { confirm: '¿Esta seguro de eliminar este empleado?' } %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  <div class="col"></div>
+
+</div>

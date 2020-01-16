@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col">
+    <table class="table">
+        <tr>
+        <th class="col">Nombre</th>
+        <th class="col">Compañia</th>
+        <th class="col"></th>
+        </tr>
+    
+        <% @companies.each do |company| %>
+        <tr>
+            <td><%= company.company_name %></td>
+            <td><%= company.company_city %></td>
+            <td><%= link_to 'Show', companies_path(company) %></td>
+        </tr>
+        <% end %>
+    </table>
+    </div>
+    <div class="col" style="width: 100%;">
+      <%= button_to "Empelados", employees_path, :class => "btn btn-primary nav_button", :method => :get %>
+        <br>
+        <br>
+        <%= button_to "Compañias", companies_path, :class => "btn btn-primary nav_button", :method => :get %>
+    </div>
+    <div class="col"></div>
+</div>

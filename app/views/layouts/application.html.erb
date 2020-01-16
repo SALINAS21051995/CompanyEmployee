@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TestRuby</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar navbar-default navbar-dark bg-dark">
+        <a class="navbar-brand" href="#"></a>  
+          <%= link_to 'RubyTest', controller: 'welcome' %>                
+      </nav>
+    </header>  
+    <br>
+    <div class="container">
+      <%= yield %>
+    </div>
+  </body>

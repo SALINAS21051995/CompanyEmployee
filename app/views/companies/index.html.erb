@@ -1,0 +1,30 @@
+<h1>Compañias</h1>
+<div class="row">
+<div class="col"></div>
+<div class="col-6">
+    <p style="float:right;"><%= link_to 'Nueva Compañia', new_company_path %></p>
+    
+    <table class="table">
+      <thead>  
+        <tr>
+          <th scope="col">Compañia</th>
+          <th scope="col">Ciudad</th>
+          <th></th>
+        </tr>
+      </thead>
+      <% @companies.each do |company| %>
+        <tr>
+          <td><%= company.company_name %></td>
+          <td><%= company.company_country %></td>
+          <td><%= link_to 'Show', company_path(company) %></td>
+          <td><%= link_to 'Edit', edit_company_path(company) %></td>
+          <td><%= link_to 'Destroy', company_path(company),
+            method: :delete,
+            data: { confirm: '¿Desea eliminar compañia?' } %>
+            </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  <div class="col"></div>
+</div>

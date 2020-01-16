@@ -1,0 +1,48 @@
+<%= form_with model: @employee, local: true do |form| %>
+    <% if @employee.errors.any? %>
+        <div id="error_explanation">
+            <h2>
+                <%= pluralize(@employee.errors.count, "error") %> prohibited
+                this user from being saved:
+            </h2>
+            <ul>
+                <% @employee.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+    <p>
+        <%= form.label :Nombre %><br>
+        <%= form.text_field :employee_name ,{:class => 'form-control'} %>
+    </p>            
+    <p>
+        <%= form.label :Apellidos %><br>
+        <%= form.text_field :employee_surname ,{:class => 'form-control'} %>
+    </p>
+    <p>
+        <%= form.label :Correo %><br>
+        <%= form.text_field :employee_email ,{:class => 'form-control'} %>
+    </p>
+    <p>
+        <%= form.label :RFC %><br>
+        <%= form.text_field :employee_rfc ,{:class => 'form-control'} %>
+    </p>
+    <p>
+        <%= form.label :Empresa %><br>
+        <%= form.collection_select(:company_id, Company.all, :company_id, :company_name, {},{:class => 'form-control'}) %>
+
+    </p>
+    <p>
+        <%= form.label :Contraseña %><br>
+        <%= form.text_field :password ,{:class => 'form-control'} %>
+
+    </p>
+    <p>
+        <%= form.label :Comprobar_contraseña %><br>
+        <%= form.text_field :password_confirmation, {:class => 'form-control'}  %>
+    </p>
+    <p style="float: right;">
+    <%= form.submit  %>
+    </p>
+<% end %>
