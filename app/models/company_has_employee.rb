@@ -1,0 +1,2 @@
+class CompanyHasEmployee < ApplicationRecord
+end

@@ -23,7 +23,7 @@ CREATE SCHEMA IF NOT EXISTS `docdigit` DEFAULT CHARACTER SET utf8 ;
 USE `docdigit` ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`employees`
+-- Table `docdigit`.`employees`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `docdigit`.`employees` (
   `employee_id` SMALLINT(3) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -36,7 +36,7 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`companies`
+-- Table `docdigit`.`companies`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `docdigit`.`companies` (
   `company_id` SMALLINT(3) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -53,30 +53,23 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`company_has_employee`
+-- Table `docdigit`.`companies_has_employees`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `docdigit`.`company_has_employee` (
-  `Che_id` SMALLINT(3) UNSIGNED NOT NULL,
-  `employee_id` SMALLINT(3) UNSIGNED NOT NULL,
-  `company_id` SMALLINT(3) UNSIGNED NOT NULL,
+CREATE TABLE `companies_has_employees` (
+  `Che_id` smallint(3) unsigned NOT NULL AUTO_INCREMENT,
+  `employee_id` smallint(3) unsigned NOT NULL,
+  `company_id` smallint(3) unsigned NOT NULL,
   PRIMARY KEY (`Che_id`),
-  INDEX `fk_employee_id_company_has_employee_fk_idx` (`employee_id` ASC),
-  INDEX `fk_company_id_company_has_employee_fk_idx` (`company_id` ASC),
-  CONSTRAINT `fk_employee_id_company_has_employee_fk`
-    FOREIGN KEY (`employee_id`)
-    REFERENCES `docdigit`.`employees` (`employee_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_company_id_company_has_employee_fk`
-    FOREIGN KEY (`company_id`)
-    REFERENCES `docdigit`.`companies` (`company_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+  KEY `fk_employee_id_company_has_employee_fk_idx` (`employee_id`),
+  KEY `fk_company_id_company_has_employee_fk_idx` (`company_id`),
+  CONSTRAINT `fk_company_id_company_has_employee_fk` FOREIGN KEY (`company_id`) REFERENCES `companies` (`company_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_employee_id_company_has_employee_fk` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`employee_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1$$
+
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`user`
+-- Table `docdigit`.`user`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `docdigit`.`user` (
   `user_id` SMALLINT(3) NOT NULL AUTO_INCREMENT,

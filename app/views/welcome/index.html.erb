@@ -4,13 +4,15 @@
         <tr>
         <th class="col">Nombre</th>
         <th class="col">Compañia</th>
+        <th class="col">Empleados</th>
         <th class="col"></th>
         </tr>
     
-        <% @companies.each do |company| %>
+        <% @companies.each_with_index  do |company,i| %>
         <tr>
             <td><%= company.company_name %></td>
             <td><%= company.company_city %></td>
+            <td><%= @count[i] %></td>
             <td><%= link_to 'Show', companies_path(company) %></td>
         </tr>
         <% end %>

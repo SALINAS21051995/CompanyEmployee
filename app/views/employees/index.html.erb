@@ -13,8 +13,8 @@
     
       <% @employees.each do |employee| %>
         <tr>
-          <td><%= employee.name %></td>
-          <td><%= employee.company %></td>
+          <td><%= employee.employee_name %></td>
+          <td><%= employee.employee_email %></td>
           <td><%= link_to 'Show', employee_path(employee) %></td>
           <td><%= link_to 'Edit', edit_employee_path(employee) %></td>
           <td><%= link_to 'Destroy', employee_path(employee),

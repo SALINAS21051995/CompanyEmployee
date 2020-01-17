@@ -3,7 +3,7 @@ class EmployeesController < ApplicationController
         @employee = Employee.find(params[:id])
     end
     def destroy
-        @employee = User.find(params[:id])
+        @employee = Employee.find(params[:id])
         @employee.destroy
         redirect_to employees_path
     end   
@@ -17,7 +17,7 @@ class EmployeesController < ApplicationController
         end
     end
     def new 
-        @employee = Employee.new
+        @employee = Employee.new        
     end
     def index 
         @employees = Employee.all
@@ -26,8 +26,10 @@ class EmployeesController < ApplicationController
         @employee = Employee.find(params[:id])
     end
     def create
-        @employee = Employee.new(employee_params)
-        if @employee.save
+        @employee = Employee.new(employee_params)        
+        if @employee.save      
+            sql = "INSERT INTO companies_has_employees (company_id, employee_id) VALUES (#{params[:employee][:company_id]}, #{@employee.id})"
+            ActiveRecord::Base.connection.execute(sql)       
             redirect_to @employee
         else
             render 'new'
@@ -35,6 +37,7 @@ class EmployeesController < ApplicationController
     end
     private
         def employee_params
-            params.require(:employee).permit(:employee_name, :employee_surname, :employee_email, :employee_rfc, :company_id, :password, :password_confirmation)
+            params.require(:employee).permit(:employee_name, :employee_surname, :employee_email, :employee_rfc)
         end
+
 end
