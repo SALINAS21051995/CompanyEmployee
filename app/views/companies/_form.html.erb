@@ -1,46 +1,46 @@
 <%= form_with scope: :company, url: companies_path, local: true do |form| %>
     <p>
     <%= form.label :Nombre %><br>
-    <%= form.text_field :company_name ,{:class => 'form-control'}%>
+    <%= form.text_field :company_name ,{:class => 'form-control', required: true }%>
     </p>
 
     <p>
     <%= form.label :Calle %><br>
-    <%= form.text_field :company_street, {:class => 'form-control'} %>
+    <%= form.text_field :company_street, {:class => 'form-control', required: true} %>
     </p>
     
     <p>
     <%= form.label :Colonia %><br>
-    <%= form.text_field :company_col, {:class => 'form-control'} %>
+    <%= form.text_field :company_col, {:class => 'form-control', required: true} %>
     </p>
 
     <p>
     <%= form.label :Número_Interior %><br>
-    <%= form.text_field :company_int ,{:class => 'form-control'}%>
+    <%= form.text_field :company_int ,{:class => 'form-control', required: true}%>
     </p>
 
     <p>
     <%= form.label :Número_Externo %><br>
-    <%= form.text_field :company_ext ,{:class => 'form-control'}%>
+    <%= form.text_field :company_ext ,{:class => 'form-control', required: true}%>
     </p>
 
     <p>
     <%= form.label :Código_Postal %><br>
-    <%= form.text_field :company_code ,{:class => 'form-control'}%>
+    <%= form.text_field :company_code ,{:class => 'form-control', required: true}%>
     </p>
 
     <p>
     <%= form.label :Ciudad %><br>
-    <%= form.text_field :company_city ,{:class => 'form-control'}%>
+    <%= form.text_field :company_city ,{:class => 'form-control', required: true}%>
     </p>
 
     <p>
     <%= form.label :País %><br>
-    <%= form.text_field :company_country ,{:class => 'form-control'}%>
+    <%= form.text_field :company_country ,{:class => 'form-control', required: true}%>
     </p>
 
     <p style="float: right;">
-    <%= form.submit %>
+    <%= form.submit 'Guardar Compañia' %>
     </p>
 <% end %>
-<%= link_to 'Back', companies_path %>
+<%= link_to 'Anterior', companies_path %>

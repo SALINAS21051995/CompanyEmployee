@@ -1,0 +1,30 @@
+<h1>Sucursales</h1>
+<div class="row">
+<div class="col"></div>
+<div class="col-6">
+    <p style="float:right;"><%= link_to 'Nueva Sucursal', new_branch_path %></p>
+    
+    <table class="table">
+      <thead>  
+        <tr>
+          <th scope="col">Sucursal</th>
+          <th scope="col">Ciudad</th>
+          <th></th>
+        </tr>
+      </thead>
+      <% @branches.each do |branch| %>
+        <tr>
+          <td><%= branch.branch_name %></td>
+          <td><%= branch.branch_country %></td>
+          <td><%= link_to 'Show', branch_path(branch) %></td>
+          <td><%= link_to 'Edit', edit_branch_path(branch) %></td>
+          <td><%= link_to 'Destroy', branch_path(branch),
+            method: :delete,
+            data: { confirm: '¿Desea eliminar sucursal?' } %>
+            </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  <div class="col"></div>
+</div>

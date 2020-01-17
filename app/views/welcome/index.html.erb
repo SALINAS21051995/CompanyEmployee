@@ -2,19 +2,24 @@
     <div class="col">
     <table class="table">
         <tr>
-        <th class="col">Nombre</th>
-        <th class="col">Compañia</th>
+        <th class="col">Sucursal</th>
+        <th class="col">Ciudad</th>
         <th class="col">Empleados</th>
         <th class="col"></th>
         </tr>
-    
-        <% @companies.each_with_index  do |company,i| %>
-        <tr>
-            <td><%= company.company_name %></td>
-            <td><%= company.company_city %></td>
-            <td><%= @count[i] %></td>
-            <td><%= link_to 'Show', companies_path(company) %></td>
-        </tr>
+        <% unless @branches.empty? %>
+            <% @branches.each_with_index  do |branch,i| %>
+            <tr>
+                <td><%= branch.branch_name %></td>
+                <td><%= branch.branch_city %></td>
+                <td><%= @count[i] %></td>
+                <td><%= link_to 'Ver', branches_path(branch) %></td>
+            </tr>
+            <% end %>
+        <% else %>
+            <tr>
+                <td colspan="4" align="center">Sin Información</td>                
+            </tr>
         <% end %>
     </table>
     </div>
@@ -22,7 +27,7 @@
       <%= button_to "Empelados", employees_path, :class => "btn btn-primary nav_button", :method => :get %>
         <br>
         <br>
-        <%= button_to "Compañias", companies_path, :class => "btn btn-primary nav_button", :method => :get %>
+        <%= button_to "Sucursales", branches_path, :class => "btn btn-primary nav_button", :method => :get %>
     </div>
     <div class="col"></div>
 </div>

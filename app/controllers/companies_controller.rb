@@ -8,7 +8,7 @@ class CompaniesController < ApplicationController
         @company = Company.find(params[:id])
     end
     def update
-        @company = Article.find(params[:id])
+        @company = Company.find(params[:id])
  
         if @company.update(company_params)
             redirect_to @company

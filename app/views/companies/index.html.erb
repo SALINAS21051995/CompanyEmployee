@@ -16,9 +16,9 @@
         <tr>
           <td><%= company.company_name %></td>
           <td><%= company.company_country %></td>
-          <td><%= link_to 'Show', company_path(company) %></td>
-          <td><%= link_to 'Edit', edit_company_path(company) %></td>
-          <td><%= link_to 'Destroy', company_path(company),
+          <td><%= link_to 'Ver', company_path(company) %></td>
+          <td><%= link_to 'Editar', edit_company_path(company) %></td>
+          <td><%= link_to 'Eliminar', company_path(company),
             method: :delete,
             data: { confirm: '¿Desea eliminar compañia?' } %>
             </td>

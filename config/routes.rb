@@ -4,5 +4,8 @@ Rails.application.routes.draw do
   get 'companies/index'
   resources :companies
   resources :employees
-  root 'welcome#index'
+  resources :branches
+  resources :managers
+  resources :login
+  root 'login#index'
 end

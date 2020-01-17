@@ -30,19 +30,10 @@
     </p>
     <p>
         <%= form.label :Empresa %><br>
-        <%= form.collection_select(:company_id, Company.all, :company_id, :company_name, {},{:class => 'form-control'}) %>
+        <%= form.collection_select(:branch_id, Branch.all, :branch_id, :branch_name, {},{:class => 'form-control'}) %>
 
-    </p>
-    <p>
-        <%= form.label :Contraseña %><br>
-        <%= form.text_field :password ,{:class => 'form-control'} %>
-
-    </p>
-    <p>
-        <%= form.label :Comprobar_contraseña %><br>
-        <%= form.text_field :password_confirmation, {:class => 'form-control'}  %>
-    </p>
+    </p>   
     <p style="float: right;">
-    <%= form.submit  %>
+    <%= form.submit 'Guardar Empleado' %>
     </p>
 <% end %>

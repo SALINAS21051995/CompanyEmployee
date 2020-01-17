@@ -1,2 +1,0 @@
-class CompanyHasEmployee < ApplicationRecord
-end

@@ -15,9 +15,9 @@
         <tr>
           <td><%= employee.employee_name %></td>
           <td><%= employee.employee_email %></td>
-          <td><%= link_to 'Show', employee_path(employee) %></td>
-          <td><%= link_to 'Edit', edit_employee_path(employee) %></td>
-          <td><%= link_to 'Destroy', employee_path(employee),
+          <td><%= link_to 'Ver', employee_path(employee) %></td>
+          <td><%= link_to 'Editar', edit_employee_path(employee) %></td>
+          <td><%= link_to 'Eliminar', employee_path(employee),
               method: :delete,
               data: { confirm: '¿Esta seguro de eliminar este empleado?' } %>
           </td>

@@ -28,7 +28,7 @@ class EmployeesController < ApplicationController
     def create
         @employee = Employee.new(employee_params)        
         if @employee.save      
-            sql = "INSERT INTO companies_has_employees (company_id, employee_id) VALUES (#{params[:employee][:company_id]}, #{@employee.id})"
+            sql = "INSERT INTO branches_has_employees (branch_id, employee_id) VALUES (#{params[:employee][:branch_id]}, #{@employee.id})"
             ActiveRecord::Base.connection.execute(sql)       
             redirect_to @employee
         else

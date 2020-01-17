@@ -1,0 +1,49 @@
+<h1>Crear Cuenta</h1>
+<div class="row">
+    <div class="col"></div>
+    <div class="col-6">
+        <div class="card" style="padding-left: 20%; padding-right: 20%; padding-top:10px;">                        
+            <%= form_with scope: :account, url: managers_path, local: true do |form| %>
+                <p>
+                <%= form.label :Nombre %><br>
+                <%= form.text_field :manager_name ,{:class => 'form-control', required: true }%>
+                </p>
+            
+                <p>
+                <%= form.label :Apellidos %><br>
+                <%= form.text_field :manager_surname, {:class => 'form-control', required: true} %>
+                </p>
+                
+                <p>
+                <%= form.label :RFC %><br>
+                <%= form.text_field :manager_rfc, {:class => 'form-control', required: true} %>
+                </p>
+            
+                <p>
+                <%= form.label :Correo %><br>
+                <%= form.text_field :manager_email ,{:class => 'form-control', required: true}%>
+                </p>
+            
+                <p>
+                <%= form.label :Nombre_de_Compañia %><br>
+                <%= form.text_field :company_name ,{:class => 'form-control', required: true}%>
+                </p>
+                
+                <p>
+                <%= form.label :Contraseña %><br>
+                <%= form.text_field :account_password ,{:class => 'form-control', required: true}%>
+                </p>
+
+                <p>
+                <%= form.label :Validar_Contraseña %><br>
+                <%= form.text_field :account_password_confirm ,{:class => 'form-control', required: true}%>
+                </p>
+                            
+                <p style="float: right;">
+                <%= form.submit %>
+                </p>
+            <% end %>
+        </div>
+    </div>
+    <div class="col"></div>
+</div>
