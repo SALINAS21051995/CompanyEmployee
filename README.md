@@ -1,6 +1,8 @@
 # README
 
-yarn version 1.21.1
+yarn 1.21.1
+ruby 2.6.5p114 (2019-10-01 revision 67812)
+Rails 6.0.2.1
 
 Database
 CREATE SCHEMA `docdigit` ;
