@@ -3,8 +3,10 @@ class EmployeesController < ApplicationController
         @employee = Employee.find(params[:id])
     end
     def destroy
-        @employee = Employee.find(params[:id])
-        @employee.destroy
+        @result = ActiveRecord::Base.connection.execute("DELETE FROM branches_has_employees where employee_id = #{params[:id]}")
+        @result = ActiveRecord::Base.connection.execute("DELETE FROM employees where employee_id = #{params[:id]}")
+        #@employee = Employee.find(params[:id])
+        #@employee.destroy
         redirect_to employees_path
     end   
     def update
@@ -20,7 +22,17 @@ class EmployeesController < ApplicationController
         @employee = Employee.new        
     end
     def index 
-        @employees = Employee.all
+        @id = session[:company_id]
+        @employees = Array.new
+        @result = ActiveRecord::Base.connection.execute("Select bhe.employee_id
+        from branches_has_employees as bhe 
+            inner join branches as b 
+            inner join company_has_branch as chb
+        ON 
+            chb.company_id = #{@id} AND chb.branch_id = b.branch_id AND b.branch_id = bhe.branch_id ;")
+        @result.each do |employee|
+            @employees.push(Employee.find(employee[0]))
+        end
     end
     def edit
         @employee = Employee.find(params[:id])

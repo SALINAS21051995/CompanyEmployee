@@ -10,17 +10,22 @@
         <th scope="col">Apellido</th>
         <th scope="col"></th>
       </tr>
-    
-      <% @employees.each do |employee| %>
+      <% unless @employees.empty? %>
+        <% @employees.each do |employee| %>
+          <tr>
+            <td><%= employee.employee_name %></td>
+            <td><%= employee.employee_email %></td>
+            <td><%= link_to 'Ver', employee_path(employee) %></td>
+            <td><%= link_to 'Editar', edit_employee_path(employee) %></td>
+            <td><%= link_to 'Eliminar', employee_path(employee),
+                method: :delete,
+                data: { confirm: '¿Esta seguro de eliminar este empleado?' } %>
+            </td>
+          </tr>
+        <% end %>
+      <% else %>
         <tr>
-          <td><%= employee.employee_name %></td>
-          <td><%= employee.employee_email %></td>
-          <td><%= link_to 'Ver', employee_path(employee) %></td>
-          <td><%= link_to 'Editar', edit_employee_path(employee) %></td>
-          <td><%= link_to 'Eliminar', employee_path(employee),
-              method: :delete,
-              data: { confirm: '¿Esta seguro de eliminar este empleado?' } %>
-          </td>
+          <td colspan="3" align="center">Sin Información</td>                
         </tr>
       <% end %>
     </table>

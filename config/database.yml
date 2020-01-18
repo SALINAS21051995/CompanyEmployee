@@ -14,7 +14,7 @@ default: &default
   encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
-  password: carlos21051995
+  password: 
   host: localhost
 
 development:
@@ -51,4 +51,4 @@ production:
   <<: *default
   database: docdigit
   username: root
-  password: <%= ENV['carlos21051995'] %>
+  password: <%= ENV[''] %>

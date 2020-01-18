@@ -1,10 +1,6 @@
 <%= form_with model: @employee, local: true do |form| %>
     <% if @employee.errors.any? %>
-        <div id="error_explanation">
-            <h2>
-                <%= pluralize(@employee.errors.count, "error") %> prohibited
-                this user from being saved:
-            </h2>
+        <div id="error_explanation">            
             <ul>
                 <% @employee.errors.full_messages.each do |msg| %>
                 <li><%= msg %></li>
@@ -14,23 +10,23 @@
     <% end %>
     <p>
         <%= form.label :Nombre %><br>
-        <%= form.text_field :employee_name ,{:class => 'form-control'} %>
+        <%= form.text_field :employee_name ,{:class => 'form-control', required: true} %>
     </p>            
     <p>
         <%= form.label :Apellidos %><br>
-        <%= form.text_field :employee_surname ,{:class => 'form-control'} %>
+        <%= form.text_field :employee_surname ,{:class => 'form-control', required: true} %>
     </p>
     <p>
         <%= form.label :Correo %><br>
-        <%= form.text_field :employee_email ,{:class => 'form-control'} %>
+        <%= form.email_field :employee_email ,{:class => 'form-control', required: true} %>
     </p>
     <p>
         <%= form.label :RFC %><br>
-        <%= form.text_field :employee_rfc ,{:class => 'form-control'} %>
+        <%= form.text_field :employee_rfc ,{:class => 'form-control' , required: true} %>
     </p>
     <p>
         <%= form.label :Empresa %><br>
-        <%= form.collection_select(:branch_id, Branch.all, :branch_id, :branch_name, {},{:class => 'form-control'}) %>
+        <%= form.collection_select(:branch_id, Branch.all, :branch_id, :branch_name, {},{:class => 'form-control', required: true}) %>
 
     </p>   
     <p style="float: right;">

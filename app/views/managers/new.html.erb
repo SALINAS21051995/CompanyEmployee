@@ -3,7 +3,7 @@
     <div class="col"></div>
     <div class="col-6">
         <div class="card" style="padding-left: 20%; padding-right: 20%; padding-top:10px;">                        
-            <%= form_with scope: :account, url: managers_path, local: true do |form| %>
+            <%= form_with scope: :account, url: managers_path, local: true do |form| %>                
                 <p>
                 <%= form.label :Nombre %><br>
                 <%= form.text_field :manager_name ,{:class => 'form-control', required: true }%>
@@ -21,7 +21,7 @@
             
                 <p>
                 <%= form.label :Correo %><br>
-                <%= form.text_field :manager_email ,{:class => 'form-control', required: true}%>
+                <%= form.email_field :manager_email ,{:class => 'form-control', required: true}%>
                 </p>
             
                 <p>
@@ -31,16 +31,16 @@
                 
                 <p>
                 <%= form.label :Contraseña %><br>
-                <%= form.text_field :account_password ,{:class => 'form-control', required: true}%>
+                <%= form.password_field :account_password ,{:class => 'form-control', required: true}%>
                 </p>
 
                 <p>
                 <%= form.label :Validar_Contraseña %><br>
-                <%= form.text_field :account_password_confirm ,{:class => 'form-control', required: true}%>
+                <%= form.password_field :account_password_confirmation ,{:class => 'form-control', required: true}%>
                 </p>
                             
                 <p style="float: right;">
-                <%= form.submit %>
+                <%= form.submit 'Crear Cuenta' %>
                 </p>
             <% end %>
         </div>

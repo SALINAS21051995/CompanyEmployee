@@ -1,6 +1,5 @@
 class ManagersController < ApplicationController
     def new 
-         
     end
     def create
         @manager = Manager.new(manager_params)
@@ -10,11 +9,16 @@ class ManagersController < ApplicationController
             sql = "INSERT INTO company_has_manager (company_id, manager_id) VALUES ( #{@company.id}, #{@manager.id})"
             ActiveRecord::Base.connection.execute(sql) 
             sql = "INSERT INTO manager_has_account (manager_id, account_id) VALUES ( #{@manager.id}, #{@account.id})"
-            ActiveRecord::Base.connection.execute(sql)       
-            redirect_to :controller => 'welcome' 
+            ActiveRecord::Base.connection.execute(sql)   
+            flash.now[:notice] = "Usuario creado Exitosamente"    
+            redirect_to :controller => 'login' 
         else
-            render 'index'
+            flash.now[:alert] = "Verifique su información."    
+            render 'new'
         end     
+    end
+    def index
+        redirect_to :controller => 'login' 
     end
     private
         def manager_params
@@ -26,6 +30,6 @@ class ManagersController < ApplicationController
         end
     private 
         def account_params
-            params.require(:account).permit(:account_password)
+            params.require(:account).permit(:account_password, :account_password_confirmation)
         end
 end

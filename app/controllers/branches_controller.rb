@@ -1,8 +1,14 @@
 class BranchesController < ApplicationController
     def new
+        @branch = Branch.new
     end
     def index
-        @branches = Branch.all
+        @branches = Array.new        
+        @id = session[:company_id]
+        @branche_from_company = ActiveRecord::Base.connection.execute("select branch_id from company_has_branch where company_id = #{@id}")       
+        @branche_from_company.each do |branch|
+            @branches.push(Branch.find(branch[0]))
+        end
     end
     def edit
         @branch = Branch.find(params[:id])
@@ -20,16 +26,24 @@ class BranchesController < ApplicationController
         @branch = Branch.find(params[:id])
     end
     def destroy
-        @branch = Branch.find(params[:id])
-        @branch.destroy
+        @result = ActiveRecord::Base.connection.execute("DELETE FROM company_has_branch where branch_id = #{params[:id]}")
+        @result = ActiveRecord::Base.connection.execute("DELETE FROM branches where branch_id = #{params[:id]}")
+
+        #@branch = Branch.find(params[:id])
+        #@branch.destroy
        
         redirect_to branches_path
     end
     def create
         @branch = Branch.new(branch_params)
 
-        @branch.save
-        redirect_to @branch
+        if @branch.save
+            sql = "INSERT INTO company_has_branch (company_id, branch_id) VALUES (#{session[:company_id]}, #{@branch.id})"
+            ActiveRecord::Base.connection.execute(sql)    
+            redirect_to @branch
+        else
+            render 'new'
+        end
     end
     private 
         def branch_params

@@ -12,16 +12,22 @@
           <th></th>
         </tr>
       </thead>
-      <% @branches.each do |branch| %>
+      <% unless @branches.empty? %>
+        <% @branches.each do |branch| %>
+          <tr>
+            <td><%= branch.branch_name %></td>
+            <td><%= branch.branch_city %></td>
+            <td><%= link_to 'Ver', branch_path(branch) %></td>
+            <td><%= link_to 'Editar', edit_branch_path(branch) %></td>
+            <td><%= link_to 'Eliminar', branch_path(branch),
+              method: :delete,
+              data: { confirm: '¿Desea eliminar sucursal?' } %>
+              </td>
+          </tr>
+        <% end %>
+      <% else %>
         <tr>
-          <td><%= branch.branch_name %></td>
-          <td><%= branch.branch_country %></td>
-          <td><%= link_to 'Show', branch_path(branch) %></td>
-          <td><%= link_to 'Edit', edit_branch_path(branch) %></td>
-          <td><%= link_to 'Destroy', branch_path(branch),
-            method: :delete,
-            data: { confirm: '¿Desea eliminar sucursal?' } %>
-            </td>
+          <td colspan="3" align="center">Sin Información</td>                
         </tr>
       <% end %>
     </table>

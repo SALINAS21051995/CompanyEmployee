@@ -1,4 +1,17 @@
 <%= form_with scope: :branch, url: branches_path, local: true do |form| %>
+    <% if @branch.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@branch.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @branch.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
     <p>
     <%= form.label :Nombre %><br>
     <%= form.text_field :branch_name ,{:class => 'form-control', required: true }%>
@@ -16,17 +29,17 @@
 
     <p>
     <%= form.label :Número_Interior %><br>
-    <%= form.text_field :branch_int ,{:class => 'form-control', required: true}%>
+    <%= form.number_field :branch_int ,{:class => 'form-control'}%>
     </p>
 
     <p>
     <%= form.label :Número_Externo %><br>
-    <%= form.text_field :branch_ext ,{:class => 'form-control', required: true}%>
+    <%= form.number_field :branch_ext ,{:class => 'form-control', required: true}%>
     </p>
 
     <p>
     <%= form.label :Código_Postal %><br>
-    <%= form.text_field :branch_code ,{:class => 'form-control', required: true}%>
+    <%= form.number_field :branch_code ,{:class => 'form-control', required: true}%>
     </p>
 
     <p>

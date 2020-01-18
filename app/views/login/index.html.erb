@@ -6,12 +6,12 @@
     <%= form_with scope: :login, local: true do |form| %>
       <p>
         <%= form.label :Correo %><br>
-        <%= form.text_field :email, { :class => 'form-control' }%>
+        <%= form.email_field :email, { :class => 'form-control', required: true }%>
       </p>
     
       <p>
         <%= form.label :Contraseña%><br>
-        <%= form.text_field :password, { :class => 'form-control'} %>
+        <%= form.password_field :password, { :class => 'form-control', required: true }  %>
       </p>
       
       <p style="float: right;">
